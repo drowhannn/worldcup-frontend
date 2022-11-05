@@ -18,7 +18,7 @@ export const useLoginStore = defineStore(
         data: userData,
       }: {
         data: Ref<any>
-      } = await useAsyncData('userData', () => useGetData('users/me/'))
+      } = await useAsyncData('userData', () => useGetData('users/me/'), { initialCache: false })
       if (!userData.value) {
         onLogout()
         navigateTo('/login?error=user-not-found')
